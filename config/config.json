@@ -1,0 +1,17 @@
+{
+  "development": {
+    "username": "agregis",
+    "database": "pokedex_favorites_development",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "agregis",
+    "database": "pokedex_favorites_test",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "agregis",
+    "database": "pokedex_favorites",
+    "dialect": "postgres"
+  }
+}
