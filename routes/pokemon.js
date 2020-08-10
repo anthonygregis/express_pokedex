@@ -6,7 +6,6 @@ const axios = require('axios')
 // GET /pokemon - return a page with favorited Pokemon
 router.get('/', (req, res) => {
   db.pokemon.findAll().then(favoriteList => {
-    console.log(favoriteList)
     res.render('pokemon/favorites', {favoriteList: favoriteList})
   })
 });
@@ -17,8 +16,6 @@ router.get('/:id', (req, res) => {
 
   axios.get(`http://pokeapi.co/api/v2/pokemon/${pokeName}`).then(apiRes => {
     let pokemon = apiRes.data
-    console.log(pokemon)
-    console.log(pokemon.sprites.other.official)
     res.render('pokemon/detail', {pokemonData: pokemon})
   })
 })
@@ -31,5 +28,19 @@ router.post('/', (req, res) => {
     res.redirect('/pokemon')
   })
 });
+
+router.delete('/', (req, res) => {
+  db.pokemon.destroy({
+    where: {
+      id: req.body.id
+    }
+  }).then(response => {
+    console.log(response)
+    res.redirect('/pokemon')
+  }).catch(error => {
+    console.log("Error", error)
+  })
+
+})
 
 module.exports = router

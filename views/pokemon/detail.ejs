@@ -1,8 +1,25 @@
-<div class="pokemon">
-    <h1>Favorite Pokemon - <%= pokemonData.name %> Details</h1>
-    <img src="<%= pokemonData.sprites.other.dream_world.front_default%>" alt="<%= pokemonData.name %> Sprite">
-    <%= pokemonData.types.forEach(type => { %>
-
-    <%= }) %>
+<div class="container">
+    <h1 class="text-center">Favorite Pokemon - <%= pokemonData.name %> Details</h1>
+    <p class="text-center">
+        <a href="/pokemon">Favorites</a>
+    </p>
+        <div class="well">
+            <h2 class="text-center"><%= pokemonData.name %></h2>
+            <img class="center-block" src="<%= pokemonData.sprites.other.dream_world.front_default %>" alt="<%= pokemonData.name %> Sprite">
+            <br>
+            <center>
+                <div id="types" class="center-block">
+                    <% pokemonData.types.forEach(typeArray => { %>
+                        <button ><%= typeArray.type.name %></button>
+                    <% }) %>
+                </div>
+            </center>
+            <h3 class="text-center">Moves</h3>
+            <% pokemonData.moves.splice(0, 4).forEach(moveArray => { %>
+                <div class="col text-center">
+                    <%= moveArray.move.name %>
+                </div>
+            <% }) %>
+        </div>
 </div>
 
